@@ -16,7 +16,19 @@
         saveTask($title, $type, $priority, $status, $date, $description);
     }
     
-    if(isset($_POST['update']))      updateTask();
+    
+    if(isset($_POST['update'])){ 
+        $id = $_POST['taskId'];
+        $title = $_POST['taskTitle'];
+        $type = $_POST['taskType'];
+        $priority = $_POST['taskPriority'];
+        $status = $_POST['taskStatus'];
+        $date = $_POST['taskDate'];
+        $description = $_POST['taskDescription'];
+   
+        updateTask($id, $title, $type, $priority, $status, $date, $description);
+    }
+
     if(isset($_POST['delete']))      deleteTask();
 
     function counter($countStatus){
@@ -34,7 +46,7 @@
         //SQL SELECT
         global $conn;
         // echo "Fetch all tasks";
-        $sql = "SELECT tasks.id as 'id' , title , types.name as 'type' , priorities.name as 'priority', status_id , task_datetime , description from tasks 
+        $sql = "SELECT tasks.id as 'id' , title , types.name as 'type' , priorities.name as 'priority', status_id ,priority_id , task_datetime , description from tasks 
         INNER JOIN types on types.id_types = tasks.type_id 
         INNER JOIN priorities on tasks.priority_id = priorities.id_priorities 
         INNER JOIN statuses on tasks.status_id=statuses.id_statuses WHERE status_id = $x";
@@ -63,7 +75,7 @@
 
             echo ' 
 
-            <button onclick="editTask("'.$row["id"].'","'.$row["type"].'","'.$row['priority'].'","'.$row['status_id'].'","'.$row['task_datetime'].'","'.$row['description'].'")"  class="d-flex button border  w-100 p-1">
+            <button onclick=editTask(this,'.$row["id"].',"'.$row["type"].'","'.$row['priority_id'].'","'.$row['status_id'].'","'.$row['task_datetime'].'")  class="d-flex button border  w-100 p-1">
             <div class="col-md-1">
                 <i class="'.$icon.' text-success"></i> 
             </div>
@@ -85,6 +97,7 @@
 
     function saveTask($title, $type, $priority, $status, $date, $description)
     {
+        
         //CODE HERE
         //SQL INSERT
         global $conn;
@@ -97,10 +110,14 @@
 		
     }
 
-    function updateTask()
+    function updateTask($id, $title, $type, $priority, $status, $date, $description)
     {
         //CODE HERE
         //SQL UPDATE
+        global $conn;
+        $sql = "UPDATE tasks SET `title`='$title',`type_id`='$type',`priority_id`='$priority',`status_id`='$status',`task_datetime`='$date',`description`='$description' 
+        WHERE id = $id ";
+        mysqli_query($conn,$sql);
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
     }
