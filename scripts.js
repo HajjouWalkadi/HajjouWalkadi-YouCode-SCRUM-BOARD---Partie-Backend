@@ -34,13 +34,3 @@ function addbtn() {
     document.getElementById("task-update-btn").style.display = "none";   
     document.getElementById("task-delete-btn").style.display = "none"; 
 };
-// function resetForm() {
-//     document.getElementById("taskTitle").value = ""
-//     document.getElementById("taskDescription").value = ""
-//     document.getElementById("taskStatus").value = ""
-//     document.getElementById("taskPriority").value = ""
-//     document.getElementById("taskDate").value = ""
-//     document.getElementById("task-update-btn").setAttribute('class', 'btn btn-primary d-none')
-//     document.getElementById("task-save-btn").setAttribute('class', 'btn btn-primary')
-// }
-// getTasks();

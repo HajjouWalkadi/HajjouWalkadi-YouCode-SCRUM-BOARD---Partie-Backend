@@ -352,7 +352,7 @@
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
-							<input type="text" id="task-id" name="taskId">
+							<input type="hidden" id="task-id" name="taskId">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
 								<input type="text" class="form-control" name="taskTitle" id="task-title" required/>
