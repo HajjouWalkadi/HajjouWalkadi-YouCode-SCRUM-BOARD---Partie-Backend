@@ -40,6 +40,7 @@
 
 
     }
+    //fonction afficher:
     function getTasks($x,$icon)
     {
         //CODE HERE
@@ -109,7 +110,7 @@
         header('location: index.php');
 		
     }
-
+    //function update:
     function updateTask($id, $title, $type, $priority, $status, $date, $description)
     {
         //CODE HERE
@@ -121,7 +122,7 @@
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
     }
-
+    // function delete:
     function deleteTask()
     {
         //CODE HERE

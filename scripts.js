@@ -4,11 +4,6 @@ function editTask(element, id, type, priority, status, date){
     document.getElementById("task-delete-btn").style.display = "block"; 
     // console.log(id);
     // console.log(element.children[1].children[1].children[1].textContent);
-    // console.log(type);
-    // console.log(priority);
-    // console.log(status);
-    // console.log(date);
-    // console.log(description);
     $('#modal-task').modal('show');
     document.querySelector('#task-id').value = id;
     document.querySelector('#task-title').value = element.children[1].children[0].textContent;

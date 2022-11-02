@@ -1,19 +1,5 @@
 <?php
     include('scripts.php');
-
-	// if(isset($_POST['saveTask'])){ 
-
-    //     $title = $_POST['taskTitle'];
-    //     $type = $_POST['taskType'];
-    //     $priority = $_POST['taskPriority'];
-    //     $status = $_POST['taskStatus'];
-    //     $date = $_POST['taskDate'];
-    //     $description = $_POST['taskDescription'];
-
-    //     saveTask($title, $type, $priority, $status, $date, $description);
-
-    // }
-
 ?>
 
 <!DOCTYPE html>
