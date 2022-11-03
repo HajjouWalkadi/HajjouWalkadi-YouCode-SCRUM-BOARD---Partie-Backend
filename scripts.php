@@ -125,13 +125,12 @@
     // function delete:
     function deleteTask()
     {
-        //CODE HERE
+           //CODE HERE
         //SQL DELETE
         $id = $_POST['taskId'];
         global $conn;
         $sql = "DELETE FROM tasks where id = $id";
         mysqli_query($conn,$sql);
-
         $_SESSION['message'] = "Task has been deleted successfully !";
 		header('location: index.php');
     }
