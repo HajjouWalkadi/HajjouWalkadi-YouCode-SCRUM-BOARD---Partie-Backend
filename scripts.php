@@ -5,7 +5,7 @@
     session_start();
 
     //ROUTING
-    //On verifie si on clique sur btn saveTask ce dernier possède des données.
+    //On verifie si ce btn saveTask existe ou pas apporte des valeurs.
     if(isset($_POST['saveTask'])){      //POST super global variable
         $title = $_POST['taskTitle'];
         $type = $_POST['taskType'];
@@ -39,7 +39,7 @@
         $res = mysqli_fetch_all($result,MYSQLI_ASSOC);
         echo count($res);
     }
-    
+
     //____________fonction afficher:_______________
     function getTasks($x,$icon)
     {
@@ -56,7 +56,6 @@
 
         $result = mysqli_query($conn,$sql);
 
-        // $row=mysqli_fetch_assoc( $result);
         while ($row = mysqli_fetch_assoc( $result) ) {
             $icon = '';
             

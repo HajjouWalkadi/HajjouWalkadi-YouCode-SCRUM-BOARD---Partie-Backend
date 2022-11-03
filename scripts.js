@@ -6,7 +6,7 @@ function editTask(element, id, type, priority, status, date){
     document.getElementById("task-update-btn").style.display = "block";   
     document.getElementById("task-delete-btn").style.display = "block"; 
     document.getElementById("task-delete-btn2").style.display = "block";
-
+// ___pour afficher le modal______________________________________________//
     $('#modal-task').modal('show');
     document.querySelector('#task-id').value = id;
     document.querySelector('#task-title').value = element.children[1].children[0].textContent;
@@ -34,7 +34,7 @@ function addbtn() {
 document.getElementById("task-delete-btn2").addEventListener('click', deleteConfirm) ;
 
 function deleteConfirm(){
-    if(confirm("Are u sure you want to DELETE this task?") == true){
+    if(confirm("Are you sure you want to DELETE this task?") == true){
         console.log("here if");
         document.getElementById('task-delete-btn').click();
     }
