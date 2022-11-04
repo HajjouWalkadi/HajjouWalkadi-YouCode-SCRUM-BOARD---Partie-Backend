@@ -29,7 +29,11 @@
         updateTask($id, $title, $type, $priority, $status, $date, $description);
     }
 
-    if(isset($_POST['delete']))      deleteTask();
+    if(isset($_POST['delete'])){ 
+        $id = $_POST['taskId'];
+        
+        deleteTask($id);
+    }
 
     function counter($countStatus){
         global $conn;
@@ -40,16 +44,16 @@
     }
 
     //____________fonction afficher:_______________
-    function getTasks($x,$icon)
+    function getTasks($status,$icon)
     {
         //CODE HERE
         //SQL SELECT
         global $conn;
         // echo "Fetch all tasks";
-        $sql = "SELECT tasks.id as 'id' , title , types.name as 'type' , priorities.name as 'priority', status_id ,priority_id , task_datetime , description from tasks 
+        $sql = "SELECT tasks.id as id , title , types.name as type , priorities.name as priority, status_id ,priority_id , task_datetime , description FROM tasks 
         INNER JOIN types on types.id_types = tasks.type_id 
         INNER JOIN priorities on tasks.priority_id = priorities.id_priorities 
-        INNER JOIN statuses on tasks.status_id=statuses.id_statuses WHERE status_id = $x";
+        INNER JOIN statuses on tasks.status_id=statuses.id_statuses WHERE status_id = $status";
 
 
 
@@ -59,15 +63,15 @@
             $icon = '';
             
             $status = $row["status_id"];
-                if($x == 1){
+                if($status == 1){
                     $icon='fa fa-circle-question';
                 }
                 
-                else if ($x == 2){
+                else if ($status == 2){
                     $icon='fa fa-spinner';
               
                 }
-                else if ($x == 3){
+                else if ($status == 3){
                     $icon='fa fa-circle-check';
                     
                 }
@@ -102,7 +106,7 @@
         global $conn;
         $sql = "INSERT INTO tasks(title, type_id, priority_id, status_id, task_datetime, description) 
         VALUES('$title', '$type', '$priority', '$status', '$date', '$description');";
-        $result=mysqli_query($conn,$sql);
+        $result = mysqli_query($conn,$sql);
 
         $_SESSION['message'] = "Task has been added successfully !";
         header('location: index.php');
@@ -114,18 +118,18 @@
         //CODE HERE
         //SQL UPDATE
         global $conn;
-        $sql = "UPDATE tasks SET `title`='$title',`type_id`='$type',`priority_id`='$priority',`status_id`='$status',`task_datetime`='$date',`description`='$description' 
+        $sql = " UPDATE tasks SET `title`='$title',`type_id`='$type',`priority_id`='$priority',`status_id`='$status',`task_datetime`='$date',`description`='$description' 
         WHERE id = $id ";
         mysqli_query($conn,$sql);
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
     }
     // function delete:
-    function deleteTask()
+    function deleteTask($id)
     {
            //CODE HERE
         //SQL DELETE
-        $id = $_POST['taskId'];
+        
         global $conn;
         $sql = "DELETE FROM tasks where id = $id";
         mysqli_query($conn,$sql);

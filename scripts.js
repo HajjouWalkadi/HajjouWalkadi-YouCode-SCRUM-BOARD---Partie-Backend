@@ -35,7 +35,6 @@ document.getElementById("task-delete-btn2").addEventListener('click', deleteConf
 
 function deleteConfirm(){
     if(confirm("Are you sure you want to DELETE this task?") == true){
-        console.log("here if");
         document.getElementById('task-delete-btn').click();
     }
 }
