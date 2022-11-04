@@ -5,8 +5,7 @@
     session_start();
 
     //ROUTING
-    //On verifie si ce btn saveTask existe ou pas apporte des valeurs.
-    if(isset($_POST['saveTask'])){      //POST super global variable
+    if(isset($_POST['saveTask'])){      
         $title = $_POST['taskTitle'];
         $type = $_POST['taskType'];
         $priority = $_POST['taskPriority'];

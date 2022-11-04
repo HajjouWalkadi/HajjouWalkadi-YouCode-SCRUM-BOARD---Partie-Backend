@@ -6,7 +6,7 @@ function editTask(element, id, type, priority, status, date){
     document.getElementById("task-update-btn").style.display = "block";   
     document.getElementById("task-delete-btn").style.display = "block"; 
     document.getElementById("task-delete-btn2").style.display = "block";
-// ___pour afficher le modal______________________________________________//
+// ___Affichage du modal______________________________________________//
     $('#modal-task').modal('show');
     document.querySelector('#task-id').value = id;
     document.querySelector('#task-title').value = element.children[1].children[0].textContent;
